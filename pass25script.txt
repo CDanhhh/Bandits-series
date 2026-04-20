@@ -1,0 +1,1 @@
+(for i in (0..10000); do echo "<password of bandit24> $i"; done) | nc localhost 30002

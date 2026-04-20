@@ -1,0 +1,84 @@
+bandit0:    bandit0
+
+bandit1:    ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If    Use simple command: ls -> cat
+
+bandit2:    263JGJPfgU6LtdEvgfWU1XP5yac29mFx    Use cat < 'filename' if there is a - in the file or file name is -
+
+bandit3:    MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx    use cat < 'filename' if there is a - in the filename or filename is - AND if there are spaces in the filename,
+                                                we can use "<some first characters of filename> + tab " to gets its name
+
+bandit4:    2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ    if the filename is hidden from you, just type tab (may be it will show up
+
+bandit5:    4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw    chill
+
+bandit6:    HWasnPhtq9AVKe0dmk45nxy20cvUa6EG    To get the disk usage of the file, use du command and to change its format to byte use -b and -a for all the files.
+
+bandit7:    morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj    To know if a file is owned by who, we can use find and add other attributes of the requirement.
+                                                ex: find / -user bandit7 -group bandit6 -size 33c (2>/dev/null) this part is for not printing out the error like permission denied
+
+bandit8:    dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc    Use grep [pattern] [filename] for searching
+
+bandit9:    4CKMh1JI91bUIZZPXDqGanal4xvAg0JM    Piping the sort command and uniq command to find out the unique text line
+
+bandit10:   FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey    sort command will proceed the file into a binary file, if use grep, we cannot search the password, to force it print them out, use -a to
+                                                treat the as text and pipeline with sort
+
+bandit11:   dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr    use base64 command with -d for decripting
+
+bandit12:   7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4    The ROT13 and ROT47 are fairly easy to implement using the Unix terminal application tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+bandit13:   FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn    This mtfk force to convert the hexdump and base on the head of the hexdmp to identify the file type using gzip -d, bzip2 -d, and tar -xf
+
+bandit14:   MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS    In this task, we need to get the sshkey.private from the virtual machine and use it to login with ssh -i <sshkey file> bandit14@bandit...
+                                                remember to chmod 700 to make the sshkey file become exercutable. Key is in /etc/bandit_pass/bandit14
+
+bandit15:   8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo    Use the pass of bandit14 to submit it to the localhost of the bandit.labs.overthewire.org by nc localhost port
+
+bandit16:   kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx    Use openssl for sending encrypted message by TLS handshake, your POV, you are client so it will be openssl s_client -connect and submit
+
+bandit17:   EReVavePLFHtFlFsjn3hyzMlvSuSAcRD    use nmap and scan by -sV for service and version and -p for port, this may takes a little bit of time. Then choose the port to openssl,
+                                                in this case, the previous pass start 'k' so it thinks that we want to use KEYUPDATE, that's why we need -quiet at the end of openssl.
+
+bandit18:   x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO    Use diff
+
+bandit19:   cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8    ssh can also be used with command after it to to perform excercution like ssh user@host -p <command>
+
+bandit20:   0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO    In this question, you need to use ls -la and understand that the binary file has the owner is bandit20 but the group is in bandit19
+                                                we can exercute when login as bandit19 but can exercute as bandit20 so just excercute it and put some command after to
+                                                run those commands as bandit20 user
+
+bandit21:   EeoULMCra2q0dSkYj561DX7s1CpBuOBt    In this question, you will need to use nc to start listening to port 1234/9999. Then use another terminal to connect to that port
+                                                via ./suconnect <portnumber> and submit the pass (I don't know why I did this)
+
+bandit22:   tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q    cd the etc/cron.d/ to see the cronjob file, then cat the script and get the password
+
+bandit23:   0Zf11ioIjMVN551jX3CmStKLYqjk54Ga    like the bandit22, but in this case the whoami part is bandit22, not bandit23. So in the script, especially the target, we should copy out
+                                                and modify the script to change $myname to bandit23. After getting a series of numbers, use it to cat < /tmp/<numbers> and get the password.
+
+bandit24:   gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8    in this challenge, you need to understand that the all the files except the . and .. in the /var/... folder are exercuted and be deleted. So
+                                                we are going to make a script and put it in that folder and wait for 1min (we don't have to access to exercute it as bandit23). Make sure to
+                                                check the temp folder you create is accessible by bandit24 (do chmod 777 <folder>).
+
+bandit25:   iCi86ttT4KSNe1armKiwbQNmB3YJP3q4    for brute-forcing on command, we have to use a script on the command line with a pipeline of <nc> command
+
+bandit26:   s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ    in bandit25, you can see the shell is not /bin/bash by cd to the /etc/passwd directory. Afte fucking around to find out,, you can see a showtext file
+                                                which contain what shell bandit26 is using but then you cannot login using only the sshkey. You have to interrupt the text.txt file while it is being
+                                                used by <more> command by maxing the size of the text and use the letter v to access vi and change it to /bin/bash. Finally, use :shell.
+
+bandit27:   upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB    to get this password for this level, just do ./bandit27-do <command> to get the password. The hardest part is in the bandit26
+
+bandit28:   Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN    just git clone the repo with the port after the hostname like <host_name>:<port>
+
+bandit29:   4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7    in this challenge, you have to look to the git log of the readme file. After observing many different commits, choose the one with the flag you need
+                                                and use git show <hash-id>:<filename>
+bandit30:   qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL    int this challenge you should chec the branches of the repo and then checkout those contain the flag
+
+bandit31:   fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy    use git tag for this challenge, git tag is a pointer to a specific commit. When new commit is made tags don't move so we can just use git tag to check
+
+bandit32:   3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K    in this challenge, you have to delete the '*.txt' in the gitignore because the .txt will not be pushed. Then do it normally
+
+bandit33:   tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0    env variables are the variables containing infor about the user and computer, in linux, the special env var is $0 which is the one which refernce to
+                                                the shell script and with that shell, we can do ls -la to see who owns the upper filter and it it bandit33, which means 'if upper can be run, cat /etc
+                                                /bandit_pass/bandit33 can be run too'.
+
+bandit34: Congratulations on solving the last level of this game!
