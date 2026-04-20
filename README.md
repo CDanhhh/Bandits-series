@@ -45,7 +45,7 @@ Each level required:
 
 ## Tools & Environment
 
-- **OS**: Kali Linux / Ubuntu
+- **OS**: CachyOS
 - **Key Tools**: git, ssh, scp, bash, grep, awk, netcat
 - **Version Control**: Git (local + remote)
 
